@@ -1,0 +1,11 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.3.41:3306/kele-oa
+    username: kele
+    password: kele1234
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher

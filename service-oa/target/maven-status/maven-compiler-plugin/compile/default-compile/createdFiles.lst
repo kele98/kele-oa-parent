@@ -1,0 +1,5 @@
+top\aikele\service\SysRoleService.class
+top\aikele\mapper\SysRoleMapper.class
+top\aikele\controller\SysRoleController.class
+top\aikele\service\impl\SysRoleServiceImpl.class
+top\aikele\ServiceAuthApplication.class
