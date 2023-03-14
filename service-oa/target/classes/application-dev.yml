@@ -9,3 +9,6 @@ spring:
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
+  jackson:
+    date-format: java.text.SimpleDateFormat
+    time-zone: GMT+8

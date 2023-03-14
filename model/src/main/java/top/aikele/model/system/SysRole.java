@@ -19,11 +19,11 @@ public class SysRole extends BaseEntity {
 
 	//@NotBlank(message = "角色名称不能为空")
 	@ApiModelProperty(value = "角色名称")
-//	@TableField("role_name")
+	@TableField("role_name")
 	private String roleName;
 
 	@ApiModelProperty(value = "角色编码")
-//	@TableField("role_code")
+	@TableField("role_code")
 	private String roleCode;
 
 	@ApiModelProperty(value = "描述")
