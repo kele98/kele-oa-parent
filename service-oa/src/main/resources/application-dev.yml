@@ -10,5 +10,5 @@ spring:
     pathmatch:
       matching-strategy: ant_path_matcher
   jackson:
-    date-format: java.text.SimpleDateFormat
+    date-format: "yyyy-MM-dd hh:mm:ss"
     time-zone: GMT+8

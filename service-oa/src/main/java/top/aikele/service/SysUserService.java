@@ -11,6 +11,6 @@ import top.aikele.model.system.SysUser;
  * @author kele
  * @since 2023-03-15
  */
-public interface ISysUserService extends IService<SysUser> {
-
+public interface SysUserService extends IService<SysUser> {
+    public int updateStatus(Integer id,Integer status);
 }

@@ -14,22 +14,22 @@ import java.util.List;
 @ApiModel(description = "用户")
 @TableName("sys_user")
 public class SysUser extends BaseEntity {
-	
+
 	private static final long serialVersionUID = 1L;
 
-	@ApiModelProperty(value = "用户名")
+	@ApiModelProperty(value = "用户名",required = true)
 	@TableField("username")
 	private String username;
 
-	@ApiModelProperty(value = "密码")
+	@ApiModelProperty(value = "密码",required = true)
 	@TableField("password")
 	private String password;
 
-	@ApiModelProperty(value = "姓名")
+	@ApiModelProperty(value = "姓名",required = true)
 	@TableField("name")
 	private String name;
 
-	@ApiModelProperty(value = "手机")
+	@ApiModelProperty(value = "手机",required = true)
 	@TableField("phone")
 	private String phone;
 
@@ -37,7 +37,7 @@ public class SysUser extends BaseEntity {
 	@TableField("head_url")
 	private String headUrl;
 
-	@ApiModelProperty(value = "部门id")
+	@ApiModelProperty(value = "部门id",required = true)
 	@TableField("dept_id")
 	private Long deptId;
 
