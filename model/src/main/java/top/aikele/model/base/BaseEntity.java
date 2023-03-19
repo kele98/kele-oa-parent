@@ -11,9 +11,11 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 @Data
 public class BaseEntity implements Serializable {
+
 
     @TableId(type = IdType.AUTO)
     private Long id;
@@ -28,6 +30,6 @@ public class BaseEntity implements Serializable {
     @TableField("is_deleted")
     private Integer isDeleted;
 
-    @TableField(exist = false)
-    private Map<String,Object> param = new HashMap<>();
+//    @TableField(exist = false)
+//    private Map<String,Object> param = new HashMap<>();
 }

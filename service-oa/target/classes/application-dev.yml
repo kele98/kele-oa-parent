@@ -12,3 +12,6 @@ spring:
   jackson:
     date-format: "yyyy-MM-dd hh:mm:ss"
     time-zone: GMT+8
+logging:
+  level:
+    root: info

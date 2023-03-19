@@ -1,5 +1,6 @@
 package top.aikele.model.system;
 
+import lombok.AllArgsConstructor;
 import top.aikele.model.base.BaseEntity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -8,10 +9,11 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 @Data
+@AllArgsConstructor
 @ApiModel(description = "角色菜单")
 @TableName("sys_role_menu")
 public class SysRoleMenu extends BaseEntity {
-	
+
 	private static final long serialVersionUID = 1L;
 
 	@ApiModelProperty(value = "角色id")

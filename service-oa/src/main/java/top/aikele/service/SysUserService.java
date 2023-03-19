@@ -12,5 +12,7 @@ import top.aikele.model.system.SysUser;
  * @since 2023-03-15
  */
 public interface SysUserService extends IService<SysUser> {
-    public int updateStatus(Integer id,Integer status);
+     int updateStatus(Integer id,Integer status);
+    SysUser getByUsername(String username);
+
 }

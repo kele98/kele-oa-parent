@@ -12,13 +12,14 @@ import javax.servlet.http.HttpServletResponse;
 
 @ControllerAdvice
 public class GlobalException {
-    @ExceptionHandler(Exception.class)
+    @ExceptionHandler(RuntimeException.class)
     @ResponseBody
     public Result error(Exception e){
-        System.out.println("发生了异常:"+e);
+        System.out.println("发生了异常:");
+        e.printStackTrace();
         return Result.fail();
     }
-   public static class myException extends Exception{
+   public static class myException extends RuntimeException{
       private int code;
       private String message;
       public myException(int code, String message){

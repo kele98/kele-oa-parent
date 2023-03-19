@@ -1,8 +1,8 @@
 package top.aikele.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
-import top.aikele.entity.SysMenu;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import top.aikele.model.system.SysMenu;
 
 /**
  * <p>

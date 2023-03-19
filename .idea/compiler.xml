@@ -7,6 +7,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="spring-security" />
         <module name="model" />
         <module name="common-util" />
         <module name="service-oa" />
@@ -21,6 +22,7 @@
       <module name="model" options="-parameters" />
       <module name="service-oa" options="-parameters" />
       <module name="service-util" options="-parameters" />
+      <module name="spring-security" options="-parameters" />
     </option>
   </component>
 </project>

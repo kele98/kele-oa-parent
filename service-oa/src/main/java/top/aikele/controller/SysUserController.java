@@ -5,15 +5,19 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
+import top.aikele.annotation.CheckData;
 import top.aikele.common.reslut.Result;
 import top.aikele.model.base.BaseEntity;
 import top.aikele.model.system.SysUser;
 import top.aikele.service.SysUserService;
 import top.aikele.service.impl.SysUserServiceImpl;
 import top.aikele.vo.system.SysUserQueryVo;
+
+import java.security.Security;
 
 /**
  * <p>
@@ -46,6 +50,7 @@ public class SysUserController {
         Page<SysUser> iPage = service.page(page1, queryWrapper);
         return Result.ok(iPage);
     }
+
     @ApiOperation("获取用户")
     @GetMapping("/get/{id}")
     public Result<SysUser> get(@PathVariable("id")Integer id){
@@ -54,9 +59,14 @@ public class SysUserController {
         return Result.ok(user);
         return Result.fail();
     }
+//    @CheckData
     @ApiOperation("添加用户")
     @PostMapping("/save")
     public Result get(SysUser user){
+        String password = user.getPassword();
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        String encode = bCryptPasswordEncoder.encode(password);
+        user.setPassword(encode);
         if(service.save(user))
         return Result.ok();
         return Result.fail();

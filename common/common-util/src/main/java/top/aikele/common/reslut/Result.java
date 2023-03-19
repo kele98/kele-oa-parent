@@ -28,7 +28,7 @@ public class Result<T> {
     public static<T> Result<T> fail(T data) {
         return build(data,ResultCodeEnum.FAIL);
     }
-    private static<T> Result<T> build(T data,ResultCodeEnum resultCodeEnum){
+    public static<T> Result<T> build(T data,ResultCodeEnum resultCodeEnum){
         Result<T> result = new Result<>();
         if(data!=null)
             result.setData(data);

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import top.aikele.common.reslut.Result;
 import top.aikele.model.system.SysRole;
 import top.aikele.service.SysRoleService;
-import top.aikele.vo.system.AssginRoleVo;
+import top.aikele.vo.system.AssignRoleVo;
 import top.aikele.vo.system.SysRoleQueryVo;
 import java.util.List;
 import java.util.Map;
@@ -98,8 +98,8 @@ public class SysRoleController {
     //分配用户角色
     @ApiOperation("分配用户角色")
     @PostMapping("/assignUser")
-    public Result<List<SysRole>> assignUser(@RequestBody AssginRoleVo AssginRoleVo){
-        sysRoleService.assignUser(AssginRoleVo);
+    public Result<List<SysRole>> assignUser(@RequestBody AssignRoleVo assignRoleVo){
+        sysRoleService.assignUser(assignRoleVo);
         return Result.ok();
     }
 }

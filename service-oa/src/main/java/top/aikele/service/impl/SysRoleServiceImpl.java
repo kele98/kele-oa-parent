@@ -10,7 +10,7 @@ import top.aikele.model.base.BaseEntity;
 import top.aikele.model.system.SysRole;
 import top.aikele.model.system.SysUserRole;
 import top.aikele.service.SysRoleService;
-import top.aikele.vo.system.AssginRoleVo;
+import top.aikele.vo.system.AssignRoleVo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -46,13 +46,13 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> impl
     }
     //分配用户角色
     @Override
-    public boolean assignUser(AssginRoleVo assginRoleVo) {
+    public boolean assignUser(AssignRoleVo assignRoleVo) {
         //1删除用户角色
         LambdaQueryWrapper<SysUserRole> queryWrapper = new LambdaQueryWrapper();
-        queryWrapper.eq(SysUserRole::getUserId,assginRoleVo.getUserId());
+        queryWrapper.eq(SysUserRole::getUserId,assignRoleVo.getUserId());
         mapper.delete(queryWrapper);
         //2重新分配用户角色
-        assginRoleVo.getRoleIdList().stream().forEach(roleId -> mapper.insert(new SysUserRole(roleId,assginRoleVo.getUserId())));
+        assignRoleVo.getRoleIdList().stream().forEach(roleId -> mapper.insert(new SysUserRole(roleId,assignRoleVo.getUserId())));
         return true;
     }
 }

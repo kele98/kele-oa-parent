@@ -1,5 +1,6 @@
 package top.aikele.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import top.aikele.mapper.SysUserMapper;
 import top.aikele.model.system.SysUser;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -22,5 +23,11 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         SysUser sysUser = baseMapper.selectById(id);
         sysUser.setStatus(status);
         return baseMapper.updateById(sysUser);
+    }
+
+    @Override
+    public SysUser getByUsername(String username) {
+        SysUser sysUser = baseMapper.selectOne(new LambdaQueryWrapper<SysUser>().eq(SysUser::getUsername,username));
+        return sysUser;
     }
 }
