@@ -8,7 +8,7 @@ import java.util.Date;
 @Slf4j
 public class JWTHelper {
     //30分钟过期
-    private static long tokenExpiration = 60;
+    private static long tokenExpiration = 60*30;
     private static String tokenSignKey = "kele1234kele1234kele1234kele1234kele1234kele1234kele1234kele1234kele1234kele1234kele1234kele1234kele1234kele1234kele1234kele1234kele1234kele1234";
     public static String creatToken(Long userID,String username){
 

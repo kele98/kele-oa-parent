@@ -2,6 +2,8 @@ package top.aikele.security;
 
 import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -25,10 +27,11 @@ import java.util.Map;
 
 public class MyUsernamePasswordAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     private boolean postOnly = true;
-
-    public MyUsernamePasswordAuthenticationFilter(AuthenticationManager authenticationManager) {
+    private StringRedisTemplate redisTemplate;
+    public MyUsernamePasswordAuthenticationFilter(AuthenticationManager authenticationManager,StringRedisTemplate redisTemplate) {
         this.setAuthenticationManager(authenticationManager);
         this.setRequiresAuthenticationRequestMatcher(new AntPathRequestMatcher("/admin/system/index/login","POST"));
+        this.redisTemplate = redisTemplate;
     }
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
@@ -49,7 +52,10 @@ public class MyUsernamePasswordAuthenticationFilter extends UsernamePasswordAuth
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
         System.out.println("登录成功");
         MyUserDetails userDetails = (MyUserDetails) authResult.getPrincipal();
+        //获取token
         String token = JWTHelper.creatToken(userDetails.getSysUser().getId(), userDetails.getSysUser().getUsername());
+        //获取当前用户的权限数据 redis key是用户名 value 是权限数据
+        redisTemplate.opsForValue().set(userDetails.getSysUser().getUsername(),JSON.toJSONString(userDetails.getAuthorities()));
         Map<String, Object> map = new HashMap<>();
         map.put("token", token);
         response.setContentType("application/json;charset=utf-8");

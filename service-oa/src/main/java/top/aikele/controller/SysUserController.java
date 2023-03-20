@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -34,6 +36,7 @@ public class SysUserController {
     @Autowired
     SysUserService service;
     @ApiOperation("条件分页查询")
+    @PreAuthorize("hasAuthority('bnt.sysUser.list')")
     @GetMapping("/get/{page}/{limit}")
     public Result<Page<SysUser>> pageQueryUser(@PathVariable("page")Integer page, @PathVariable("limit") Integer limit, SysUserQueryVo sysUserQueryVo){
         Page<SysUser> page1 = new Page<>(page,limit);
@@ -50,7 +53,6 @@ public class SysUserController {
         Page<SysUser> iPage = service.page(page1, queryWrapper);
         return Result.ok(iPage);
     }
-
     @ApiOperation("获取用户")
     @GetMapping("/get/{id}")
     public Result<SysUser> get(@PathVariable("id")Integer id){

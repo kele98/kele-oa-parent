@@ -4,6 +4,8 @@ import org.apache.ibatis.annotations.Mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import top.aikele.model.system.SysMenu;
 
+import java.util.List;
+
 /**
  * <p>
  * 菜单表 Mapper 接口
@@ -15,4 +17,5 @@ import top.aikele.model.system.SysMenu;
 @Mapper
 public interface SysMenuMapper extends BaseMapper<SysMenu> {
 
+    List<SysMenu> findListByUserId(Long id);
 }

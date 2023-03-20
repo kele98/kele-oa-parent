@@ -7,6 +7,7 @@ import top.aikele.config.GlobalException;
 import top.aikele.model.system.SysMenu;
 import top.aikele.vo.system.AssginMenuVo;
 import top.aikele.vo.system.AssignRoleVo;
+import top.aikele.vo.system.RouterVo;
 
 import java.util.List;
 
@@ -26,4 +27,8 @@ public interface SysMenuService extends IService<SysMenu> {
     List<SysMenu> findSysMenuByRoleID(Integer roleID);
 
     boolean doAssign(AssginMenuVo assginMenuVo);
+
+    List<RouterVo> findUserMenuListByUserId(Long id);
+
+    List<String> findUserPermsByUserId(Long id);
 }

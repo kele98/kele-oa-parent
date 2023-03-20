@@ -12,6 +12,9 @@ spring:
   jackson:
     date-format: "yyyy-MM-dd hh:mm:ss"
     time-zone: GMT+8
+  redis:
+    host: 192.168.3.41
+    port: 6379
 logging:
   level:
     root: info
