@@ -4,6 +4,7 @@ import io.jsonwebtoken.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.StringUtils;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 @Slf4j
 public class JWTHelper {
@@ -11,15 +12,16 @@ public class JWTHelper {
     private static long tokenExpiration = 60*30;
     private static String tokenSignKey = "kele1234kele1234kele1234kele1234kele1234kele1234kele1234kele1234kele1234kele1234kele1234kele1234kele1234kele1234kele1234kele1234kele1234kele1234";
     public static String creatToken(Long userID,String username){
-
         String token = Jwts.builder()
                 .setSubject("auth-user")
+                .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + tokenExpiration*1000))
                 .claim("userId", userID)
                 .claim("username", username)
                 .signWith(SignatureAlgorithm.HS512, tokenSignKey)
                 .compressWith(CompressionCodecs.GZIP)
                 .compact();
+
         return token;
     }
     public static Long getUserId(String token){

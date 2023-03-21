@@ -6,15 +6,21 @@ spring:
     url: jdbc:mysql://192.168.3.41:3306/kele-oa
     username: kele
     password: kele1234
-  mvc:
-    pathmatch:
-      matching-strategy: ant_path_matcher
   jackson:
     date-format: "yyyy-MM-dd hh:mm:ss"
     time-zone: GMT+8
   redis:
     host: 192.168.3.41
     port: 6379
+  activiti:
+    #    true:表不存在，自动创建（开发使用）
+    database-schema-update: true
+    #监测历史表是否存在，activities7默认不开启历史表
+    db-history-used: true
+    #full：除了audit、还保存其他全部流程相关的细节数据，包括一些流程参数
+    history-level: full
+    #校验流程文件，默认校验resources下的process 文件夹的流程文件
+    check-process-definitions: true
 logging:
   level:
     root: info

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="top.aikele.mapper.SysMenuMapper">
+<mapper namespace="top.aikele.auth.mapper.SysMenuMapper">
     <resultMap id="sysMenuMap" type="top.aikele.model.system.SysMenu" autoMapping="true"></resultMap>
     <sql id="columns">
         sm.id,sm.parent_id,sm.name,sm.type,sm.path,sm.component,sm.perms,sm.icon,sm.sort_value,sm.status,sm.create_time,sm.update_time,sm.is_deleted

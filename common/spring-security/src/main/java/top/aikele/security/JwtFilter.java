@@ -36,7 +36,11 @@ public class JwtFilter extends OncePerRequestFilter {
         logger.info("uri:"+request.getRequestURI());
         List<String> urlPermit = new ArrayList<>();
         urlPermit.add("/admin/system/index/login");
-        urlPermit.add("http://localhost:8080/swagger-ui.html");
+        urlPermit.add("/swagger");
+        urlPermit.add("/favicon.ico");
+        urlPermit.add("webjars");
+        urlPermit.add("v2");
+        urlPermit.add("csrf");
         String requestURI = request.getRequestURI();
         //如果是登录接口，直接放行
         for (String s : urlPermit) {
