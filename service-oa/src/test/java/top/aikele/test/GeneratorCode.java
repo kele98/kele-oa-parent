@@ -18,12 +18,14 @@ public class GeneratorCode {
                             .outputDir("D:\\Project\\kele-oa-parent\\service-oa\\src\\main\\java"); // 指定输出目录
                 })
                 .packageConfig(builder -> {
-                    builder.parent("top.aikele.process") // 设置父包名
-                            .pathInfo(Collections.singletonMap(OutputFile.xml, "D:\\Project\\kele-oa-parent\\service-oa\\src\\main\\resources\\mapper")); // 设置mapperXml生成路径
+                    builder.parent("top.aikele.wechat") // 设置父包名
+                            .pathInfo(Collections.singletonMap(OutputFile.xml, "D:\\Project\\kele-oa-parent\\service-oa\\src\\main\\resources\\mapper")) // 设置mapperXml生成路径
+                            .service("service");
+
                 })
                 .strategyConfig(builder -> {
-                    builder.addInclude("oa_process") // 设置需要生成的表名
-                            .addTablePrefix("t_", "c_"); // 设置过滤表前缀
+                    builder.addInclude("wechat_menu") // 设置需要生成的表名
+                            .addTablePrefix("t_", "c_","wechat_"); // 设置过滤表前缀
                 })
                 .templateEngine(new FreemarkerTemplateEngine()) // 使用Freemarker引擎模板，默认的是Velocity引擎模板
                 .execute();

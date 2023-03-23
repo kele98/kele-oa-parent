@@ -34,6 +34,8 @@ public class SecurityConfig  {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 //允许跨域
+                .cors()
+                .and()
                 .csrf().disable();
 //                .formLogin(Customizer.withDefaults());
 //                .httpBasic(Customizer.withDefaults());

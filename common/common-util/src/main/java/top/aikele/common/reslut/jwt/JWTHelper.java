@@ -14,7 +14,7 @@ public class JWTHelper {
     public static String creatToken(Long userID,String username){
         String token = Jwts.builder()
                 .setSubject("auth-user")
-                .setIssuedAt(new Date(System.currentTimeMillis()))
+                .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + tokenExpiration*1000))
                 .claim("userId", userID)
                 .claim("username", username)

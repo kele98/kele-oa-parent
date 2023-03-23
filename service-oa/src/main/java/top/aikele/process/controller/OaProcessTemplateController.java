@@ -12,7 +12,9 @@ import org.springframework.web.multipart.MultipartFile;
 import top.aikele.common.reslut.Result;
 import top.aikele.model.process.ProcessTemplate;
 import top.aikele.model.process.ProcessType;
+import top.aikele.process.service.OaProcessService;
 import top.aikele.process.service.OaProcessTemplateService;
+import top.aikele.process.service.OaProcessTypeService;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -34,6 +36,8 @@ import java.util.Map;
 public class OaProcessTemplateController {
     @Autowired
     private OaProcessTemplateService processTemplateService;
+    @Autowired
+    private OaProcessService oaProcessService;
     //分页查询审批模板
     @ApiOperation("获取分页审批模板数据")
     @GetMapping("{page}/{limit}")
@@ -80,11 +84,11 @@ public class OaProcessTemplateController {
         //获取classes目录
         String path = ResourceUtils.getURL("classpath:").getPath();
         String filename = file.getOriginalFilename();
-        File temp = new File(path + "/processes");
+        File temp = new File(path + "/processes/");
         if(!temp.exists()){
             temp.mkdirs();
         }
-        File zipFile = new File(temp + filename);
+        File zipFile = new File(temp.getPath()+"/"+filename);
         try {
             file.transferTo(zipFile);
         } catch (IOException e) {
@@ -102,7 +106,6 @@ public class OaProcessTemplateController {
     @GetMapping("/publish/{id}")
     public Result publish(@PathVariable Long id){
         //修改模板发布状态 1 已经发布
-        //流程定义的部署
         processTemplateService.publish(id);
         return  Result.ok();
     }

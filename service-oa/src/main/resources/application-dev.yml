@@ -24,3 +24,6 @@ spring:
 logging:
   level:
     root: info
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*.xml
+name: 123
